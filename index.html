@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<link rel="stylesheet" type="text/css" href="test18css.css">
+</head>
+	<body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<h1>Guess what number the computer is thinking!
+		<!---Guesses left are displayed in the console as function guessesLeft"--></h1>
+		<p id="html">  </p>
+
+		<button id="reset"><h1>Reset</h1></button>
+	<script type="text/javascript">
+ 
+
+
+
+
+
+
+//user make a choice
+//computer make choice
+//record both choices
+//determine win loss or tie
+//display results to user
+
+var options = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var wins =0;
+var losses=0;
+var ties=0;
+var guessesLeft=9;
+var guessesSoFar=[];
+var userGuess= null;
+	var computerGuess = options[Math.floor(Math.random()*options.length)];
+//this is what happens when you press a button
+document.onkeyup = function()  {
+	var userGuess = String.fromCharCode(event.keyCode).
+		toLowerCase();
+
+		//log this as userGuess
+		console.log(userGuess);
+
+		console.log(computerGuess);
+			
+
+		//all possible solutions
+		// what is the correct way to abbreviate the array?
+
+	if (userGuess == computerGuess) {
+		wins++;
+		alert("WINNER!");
+		guessesLeft = 9;
+		computerGuess = options[Math.floor(Math.random()*options.length)];
+
+	} 
+
+		if (userGuess != computerGuess) {
+		guessesLeft--;
+		guessesSoFar++;
+	}	
+	if (guessesLeft < 1) {
+		alert("You are all out of guesses!");
+		losses ++;
+		guessesLeft = 9;
+	}
+
+//reset button logic!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+var html= "wins: " + wins + "<br>losses:" +losses + "<br>guessesLeft: " +guessesLeft + "<br>guessesSoFar: ";
+document.querySelector("#html").innerHTML = html;
+}
+
+
+
+</script>
+</body>
+</html>
